@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../api";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
@@ -484,21 +485,21 @@ function MatchPredictor({ isDarkMode }) {
     const validHome = homeXI.filter(p => p !== null);
     const validAway = awayXI.filter(p => p !== null);
     if (home && away && validHome.length === 11 && validAway.length === 11) {
-      axios.post("http://127.0.0.1:8000/predict-match", {
+      axios.post(`${API_BASE_URL}/predict-match`, {
         home_team: home.name, away_team: away.name,
         home_lineup: validHome, away_lineup: validAway,
         current_home_score: homeScore, current_away_score: awayScore, minute
       }).then(res => {
         setResult(res.data);
-        axios.get(`http://127.0.0.1:8000/match-heatmap?home_team=${home.name}&away_team=${away.name}&h_score=${homeScore}&a_score=${awayScore}&min=${minute}`)
+        axios.get(`${API_BASE_URL}/match-heatmap?home_team=${home.name}&away_team=${away.name}&h_score=${homeScore}&a_score=${awayScore}&min=${minute}`)
           .then(heat => setHeatmap(heat.data));
       });
     }
   }, [home, away, homeScore, awayScore, minute, homeXI, awayXI]);
 
   useEffect(() => {
-    if (home) axios.get(`http://127.0.0.1:8000/get-squad?team=${home.name}`).then(res => setHomeSquad(sortSquad(res.data)));
-    if (away) axios.get(`http://127.0.0.1:8000/get-squad?team=${away.name}`).then(res => setAwaySquad(sortSquad(res.data)));
+    if (home) axios.get(`${API_BASE_URL}/get-squad?team=${home.name}`).then(res => setHomeSquad(sortSquad(res.data)));
+    if (away) axios.get(`${API_BASE_URL}/get-squad?team=${away.name}`).then(res => setAwaySquad(sortSquad(res.data)));
   }, [home, away]);
 
   return (

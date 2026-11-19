@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../api";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
@@ -21,7 +22,7 @@ function Squads({ isDarkMode }) {
       setIsLoading(true);
       setSquad([]); 
       
-      axios.get(`http://127.0.0.1:8000/get-squad?team=${selectedTeam.name}`)
+      axios.get(`${API_BASE_URL}/get-squad?team=${selectedTeam.name}`)
         .then(res => {
           const order = { "GK": 0, "DEF": 1, "MID": 2, "FWD": 3 };
           const sortedSquad = res.data.sort((a, b) => order[a.Position] - order[b.Position]);

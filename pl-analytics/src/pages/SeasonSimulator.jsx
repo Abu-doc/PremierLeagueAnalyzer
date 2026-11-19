@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../api";
 import { useState, useEffect, useRef, useMemo } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
@@ -219,7 +220,7 @@ function SeasonSimulator({ isDarkMode }) {
     }, 150);
 
     try {
-      const res = await axios.get("http://127.0.0.1:8000/simulate-season");
+     const res = await axios.get(`${API_BASE_URL}/simulate-season`);
       
       // >>> THE GOD MODE INJECTOR <<<
       // We intercept the data and physically hack the points before React renders it!

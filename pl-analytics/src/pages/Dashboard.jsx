@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../api";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
@@ -69,7 +70,7 @@ function Dashboard({ isDarkMode, toggleTheme }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/team-strengths");
+        const res = await axios.get(`${API_BASE_URL}/team-strengths`);
         const sorted = [...res.data].sort((a, b) => b.HomeAttack - a.HomeAttack);
         setAllTeams(sorted);
         setTeamA(sorted[0]);

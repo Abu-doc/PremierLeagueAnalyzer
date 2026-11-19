@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../api";
 import { useEffect, useState, useRef, useMemo } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
@@ -45,7 +46,7 @@ function TeamAnalytics({ isDarkMode }) {
 
   // 1. Initial Fetch
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/team-strengths")
+    axios.get(`${API_BASE_URL}/team-strengths`)
       .then(res => setTeamsData(res.data))
       .catch(err => console.error("Error fetching strengths:", err));
   }, []);
@@ -74,8 +75,8 @@ function TeamAnalytics({ isDarkMode }) {
 
     try {
       const [formRes, squadRes] = await Promise.all([
-        axios.get(`http://127.0.0.1:8000/team-form?team=${team.name}`).catch(() => ({ data: [] })),
-        axios.get(`http://127.0.0.1:8000/get-squad?team=${team.name}`).catch(() => ({ data: [] }))
+        axios.get(`${API_BASE_URL}/team-form?team=${team.name}`).catch(() => ({ data: [] })),
+        axios.get(`${API_BASE_URL}/get-squad?team=${team.name}`).catch(() => ({ data: [] }))
       ]);
 
       const currentForm = Array.isArray(formRes.data) ? formRes.data : [];
