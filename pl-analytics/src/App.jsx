@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import Sidebar from "./components/Sidebar";
-import SplashScreen from "./components/SplashScreen";
+import SplashScreen from "./components/Splashscreen";
 
 import Dashboard from "./pages/Dashboard";
 import MatchPredictor from "./pages/MatchPredictor";
