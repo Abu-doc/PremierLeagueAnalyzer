@@ -4,7 +4,7 @@
 
 <div align="center">
 
-[🌐 Live Demo](https://premier-league-analyzer-tau.vercel.app/) · [📂 GitHub Repository](https://github.com/Abu-doc/PremierLeagueAnalyzer) · [📊 Seasons](https://img.shields.io/badge/Seasons-2008--2024-blue?style=for-the-badge)
+[🌐 Live Demo](https://premier-league-analyzer-tau.vercel.app/) · [📂 GitHub Repository](https://github.com/Abu-doc/PremierLeagueAnalyzer) 
 
 </div>
 
